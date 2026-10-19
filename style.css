@@ -2478,4 +2478,45 @@ footer .brand-text span {
     }
 }
 
+/* CARRINHO — CUPOM MAIS COMPACTO */
+#cart-bottom {
+    padding-top: 10px;
+    gap: 6px;
+}
+
+#cart-bottom .coupon-section,
+#cart-bottom .coupon-box {
+    margin: 4px 0;
+    padding: 8px;
+}
+
+#coupon-code {
+    padding: 8px 10px;
+    height: 36px;
+    font-size: 13px;
+}
+
+#apply-coupon {
+    padding: 8px 12px;
+    min-height: 36px;
+    font-size: 13px;
+}
+
+#coupon-message {
+    margin-top: 4px;
+    font-size: 11px;
+}
+
+#cart-bottom .cart-summary,
+#cart-bottom .summary-row {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* Mais espaço para visualizar os produtos */
+.cart-items {
+    min-height: 0;
+    overflow-y: auto;
+}
+
 
