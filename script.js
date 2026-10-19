@@ -22,7 +22,7 @@ const products = [
     category: "hot",
     price: 45.90,
     description: "Salmão fresco ou grelhado, cream cheese Philadelphia, crocância irresistível de Doritos, cebolinha, gergelim e molho tarê Sakura. Crocante por fora, cremoso por dentro e com o sabor inconfundível de Doritos!",
-    image: "bighotedoritos.jpg"
+    image: "bighotdoritos.jpg"
   },
   {
     id: 3,
@@ -58,14 +58,14 @@ const products = [
     image: "bighotpatedesalmao.jpg"
   },
 
-  // BURGERS E HOT ROLL — PRODUTOS MANTIDOS
+  // BURGERS E HOT ROLL
   {
     id: 7,
     name: "Burger Hot (Salmão)",
     category: "hot",
     price: 45.90,
     description: "Salmão grelhado, cream cheese e arroz japonês.",
-    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
+    image: "burgerhotsalmao.jpg"
   },
   {
     id: 8,
@@ -73,7 +73,7 @@ const products = [
     category: "hot",
     price: 49.90,
     description: "Camarão grelhado, cream cheese e arroz japonês.",
-    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
+    image: "burgerhotcamarao.jpg"
   },
   {
     id: 9,
@@ -81,7 +81,7 @@ const products = [
     category: "hot",
     price: 29.90,
     description: "10 hot rolls de salmão fresco, cream cheese Philadelphia e arroz japonês, empanados e fritos.",
-    image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80"
+    image: "hotroll10.jpg"
   },
 
   // TEMAKIS FRITOS
@@ -128,14 +128,14 @@ const products = [
     image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80"
   },
 
-  // COMBOS — PRODUTOS MANTIDOS
+  // COMBOS
   {
     id: 16,
     name: "Combo Rore Roll",
     category: "combos",
     price: 99.90,
     description: "2 Big Hots + 1 porção de Hot Roll (10 unidades).",
-    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
+    image: "comborore.jpg"
   },
   {
     id: 17,
@@ -144,8 +144,16 @@ const products = [
     price: 129.90,
     description: "2 Big Hot Extreme + escolha de acompanhamento.",
     badge: "Combo especial",
-    image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80",
+    image: "combobig.jpg",
     options: ["Big Temaki", "Hot Roll — 10 unidades"]
+  },
+  {
+    id: 18,
+    name: "Combo Rorec Roll",
+    category: "combos",
+    price: 99.90,
+    description: "Combo Rorec Roll com camarão.",
+    image: "combororecamarao.jpg"
   }
 ];
 
