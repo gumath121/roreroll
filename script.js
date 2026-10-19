@@ -7,49 +7,60 @@
 const WHATSAPP_NUMBER = "5515992025858";
 
 const products = [
-  // HOTS E BURGERS
+  // BIG HOTS
   {
     id: 1,
-    name: "Big Hot",
+    name: "Big Hot Tradicional",
     category: "hot",
     price: 42.90,
-    description: "Salmão fresco, cream cheese Philadelphia e cheiro verde.",
-    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
+    description: "Salmão fresco ou grelhado, cream cheese Philadelphia, cebolinha, gergelim e molho tarê Sakura. O clássico que conquista: crocante por fora, cremoso por dentro e com a combinação perfeita de sabores!",
+    image: "bighottradicional.jpg"
   },
   {
     id: 2,
-    name: "Big Hot Salmão Especial",
+    name: "Big Hot Doritos",
     category: "hot",
     price: 45.90,
-    description: "Mais salmão, cream cheese Philadelphia, cheiro verde e arroz japonês.",
-    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
+    description: "Salmão fresco ou grelhado, cream cheese Philadelphia, crocância irresistível de Doritos, cebolinha, gergelim e molho tarê Sakura. Crocante por fora, cremoso por dentro e com o sabor inconfundível de Doritos!",
+    image: "bighotdoritos.jpg"
   },
   {
     id: 3,
     name: "Big Hot Shimeji",
     category: "hot",
     price: 49.90,
-    description: "Salmão fresco, shimeji, cream cheese Philadelphia, cheiro verde e arroz japonês.",
-    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
+    description: "Salmão fresco ou grelhado, cream cheese Philadelphia, shimeji selecionado, cebolinha, gergelim e molho tarê Sakura. A combinação perfeita do salmão com o sabor marcante do shimeji, em uma versão crocante e irresistível!",
+    image: "bighotshimeji.jpg"
   },
   {
     id: 4,
     name: "Big Hot Camarão",
     category: "hot",
     price: 54.90,
-    description: "Salmão fresco, camarão, cream cheese Philadelphia, cheiro verde e arroz japonês.",
-    image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80"
+    description: "Salmão fresco ou grelhado, camarões selecionados, cream cheese Philadelphia, cebolinha, gergelim e molho tarê Sakura. A combinação perfeita entre a cremosidade do Philadelphia e o sabor marcante do camarão!",
+    image: "bighotcamarao.jpg"
   },
   {
     id: 5,
     name: "Big Hot Extreme",
     category: "hot",
     price: 59.90,
-    description: "Salmão fresco, muito cream cheese Philadelphia, cheiro verde e arroz japonês.",
-    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
+    description: "Salmão fresco ou grelhado, cream cheese Philadelphia em dobro, cebolinha, gergelim e molho tarê Sakura. Para os apaixonados por cream cheese!",
+    image: "bighotextreme.jpg",
+    badge: "Mais cremoso"
   },
   {
     id: 6,
+    name: "Big Hot Patê de Salmão",
+    category: "hot",
+    price: 45.90,
+    description: "Salmão fresco ou grelhado, patê de salmão cremoso, cream cheese Philadelphia, cebolinha, gergelim e molho tarê Sakura. Mais cremosidade, mais sabor e a combinação perfeita para quem ama salmão!",
+    image: "bighotpatedesalmao.jpg"
+  },
+
+  // BURGERS E HOT ROLL — PRODUTOS MANTIDOS
+  {
+    id: 7,
     name: "Burger Hot (Salmão)",
     category: "hot",
     price: 45.90,
@@ -57,7 +68,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: 7,
+    id: 8,
     name: "Burger Hot (Camarão)",
     category: "hot",
     price: 49.90,
@@ -65,7 +76,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: 8,
+    id: 9,
     name: "Hot Roll — 10 unidades",
     category: "hot",
     price: 29.90,
@@ -73,53 +84,53 @@ const products = [
     image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80"
   },
 
-  // TEMAKIS RECHEADOS FRITOS
-  {
-    id: 9,
-    name: "Temaki Recheado Frito Tradicional",
-    category: "temaki",
-    price: 29.90,
-    description: "Arroz japonês, salmão, cream cheese, cebolinha e alga nori.",
-    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
-  },
+  // TEMAKIS FRITOS
   {
     id: 10,
-    name: "Temaki Recheado Frito de Salmão e Philadelphia",
+    name: "Temaki Frito Tradicional",
     category: "temaki",
-    price: 34.90,
-    description: "Arroz japonês, salmão, Philadelphia, cebolinha e alga nori.",
-    badge: "Mais pedido",
-    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
+    price: 29.90,
+    description: "Temaki frito, aberto e recheado, com casquinha crocante por fora e muito sabor por dentro. Uma combinação irresistível para quem ama sushi frito!",
+    image: "temakifritotradicional.jpg"
   },
   {
     id: 11,
-    name: "Temaki Recheado Frito Doritos",
+    name: "Temaki Frito Filadélfia",
     category: "temaki",
-    price: 36.90,
-    description: "Arroz japonês, salmão, Philadelphia, cebolinha, Doritos crocante e alga nori.",
-    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
+    price: 34.90,
+    description: "Temaki aberto, empanado e frito, recheado com salmão e cream cheese, finalizado com gergelim e opção de cebolinha. Crocância por fora, cremosidade por dentro e uma combinação irresistível de sabores em cada mordida!",
+    badge: "Mais pedido",
+    image: "temakifritofiladelfia.jpg"
   },
   {
     id: 12,
+    name: "Temaki Frito Doritos",
+    category: "temaki",
+    price: 36.90,
+    description: "Temaki aberto, empanado e frito, recheado com salmão e cream cheese, finalizado com Doritos crocante para uma combinação irresistível de cremosidade e crocância!",
+    image: "temakifritodoritos.jpg"
+  },
+  {
+    id: 13,
+    name: "Temaki Frito Extreme Philadelphia",
+    category: "temaki",
+    price: 38.90,
+    description: "Temaki aberto, empanado e frito, recheado com salmão e o dobro de cream cheese Philadelphia. Finalizado com gergelim e opção de cebolinha, para uma experiência ainda mais cremosa e saborosa!",
+    badge: "Mais recheado",
+    image: "temakifritoextremefiladelfia.jpg"
+  },
+  {
+    id: 14,
     name: "Temaki Recheado Frito Ebi (Camarão)",
     category: "temaki",
     price: 38.90,
     description: "Arroz japonês, camarão, Philadelphia, cebolinha e alga nori.",
     image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80"
   },
-  {
-    id: 13,
-    name: "Temaki Recheado Frito Extreme",
-    category: "temaki",
-    price: 38.90,
-    description: "Arroz japonês, salmão, Philadelphia, cebolinha, alga nori e camada extra de Philadelphia.",
-    badge: "Mais recheado",
-    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
-  },
 
-  // COMBOS
+  // COMBOS — PRODUTOS MANTIDOS
   {
-    id: 14,
+    id: 15,
     name: "Combo Rorec Roll",
     category: "combos",
     price: 110.90,
@@ -127,7 +138,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: 15,
+    id: 16,
     name: "Combo Rore Roll",
     category: "combos",
     price: 99.90,
@@ -135,7 +146,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: 16,
+    id: 17,
     name: "Combo Big Hot Extreme",
     category: "combos",
     price: 129.90,
@@ -228,8 +239,9 @@ function renderProducts() {
           <div class="form-group product-option">
             <label for="option-${product.id}">Acompanhamento</label>
             <select id="option-${product.id}">
-              <option value="Big Temaki">Big Temaki</option>
-              <option value="Hot Roll — 10 unidades">Hot Roll — 10 unidades</option>
+              ${product.options.map((option) => `
+                <option value="${escapeHTML(option)}">${escapeHTML(option)}</option>
+              `).join("")}
             </select>
           </div>
         ` : ""}
