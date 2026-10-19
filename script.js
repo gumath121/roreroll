@@ -346,6 +346,10 @@ function cartQuantity() {
   return cart.reduce((total, item) => total + item.quantity, 0);
 }
 
+/* =========================================
+   CUPOM DE DESCONTO
+========================================= */
+
 function couponDiscount() {
   if (!couponApplied || cartSubtotal() < COUPON_MINIMUM) {
     return 0;
@@ -374,6 +378,20 @@ function updateCouponDisplay() {
 
   if ($("#cart-total")) {
     $("#cart-total").textContent = money(cartTotal());
+  }
+
+  const checkoutDiscountRow = $("#checkout-discount-row");
+
+  if (checkoutDiscountRow) {
+    checkoutDiscountRow.hidden = discount <= 0;
+  }
+
+  if ($("#checkout-discount")) {
+    $("#checkout-discount").textContent = `− ${money(discount)}`;
+  }
+
+  if ($("#checkout-total")) {
+    $("#checkout-total").textContent = money(cartTotal());
   }
 
   const message = $("#coupon-message");
@@ -478,7 +496,8 @@ function renderCart() {
       </div>
     </div>
   `).join("");
-     updateCouponDisplay();
+
+  updateCouponDisplay();
 }
 
 /* =========================================
@@ -512,6 +531,8 @@ function openCheckout() {
 
   const checkoutTotal = $("#checkout-subtotal");
   if (checkoutTotal) checkoutTotal.textContent = money(cartSubtotal());
+
+  updateCouponDisplay();
 }
 
 function closeCheckout() {
@@ -593,7 +614,18 @@ function submitOrder(event) {
 
   lines.push(
     "",
-    `*Subtotal dos produtos: ${money(cartSubtotal())}`,
+    `*Subtotal dos produtos: ${money(cartSubtotal())}`
+  );
+
+  if (couponDiscount() > 0) {
+    lines.push(
+      `*Cupom aplicado: ${COUPON_CODE}*`,
+      `*Desconto (${COUPON_PERCENT}%): -${money(couponDiscount())}*`
+    );
+  }
+
+  lines.push(
+    `*Total dos produtos: ${money(cartTotal())}`,
     "Taxa de entrega: confirmar com a loja.",
     "",
     `*Pagamento:* ${customer.payment}`
@@ -614,7 +646,6 @@ function submitOrder(event) {
 
   window.open(url, "_blank", "noopener,noreferrer");
 }
-
 
 /* =========================================
    EVENTOS
