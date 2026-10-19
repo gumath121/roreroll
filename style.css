@@ -2412,3 +2412,70 @@ footer .brand-text span {
   }
 }
 
+/* FAIXA FIXA DE COMPRA NO CELULAR */
+.mobile-cart-bar {
+    display: none;
+}
+
+@media (max-width: 760px) {
+    .mobile-cart-bar {
+        position: fixed;
+        z-index: 190;
+        left: 12px;
+        right: 12px;
+        bottom: max(12px, env(safe-area-inset-bottom));
+        width: calc(100% - 24px);
+        box-sizing: border-box;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 14px;
+        border: 0;
+        border-radius: 14px;
+        background: #c8202f;
+        color: #ffffff;
+        box-shadow: 0 5px 24px rgba(0, 0, 0, 0.24);
+        text-align: left;
+        font-family: inherit;
+        cursor: pointer;
+    }
+
+    .mobile-cart-bar.visible {
+        display: flex;
+    }
+
+    .mobile-cart-icon {
+        font-size: 23px;
+    }
+
+    .mobile-cart-info {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 3px;
+        min-width: 0;
+    }
+
+    .mobile-cart-info strong {
+        font-size: 14px;
+    }
+
+    .mobile-cart-info small {
+        font-size: 11px;
+        opacity: 0.9;
+    }
+
+    #mobile-cart-total {
+        white-space: nowrap;
+        font-size: 14px;
+    }
+
+    .mobile-cart-arrow {
+        font-size: 20px;
+    }
+
+    body {
+        padding-bottom: 76px;
+    }
+}
+
+
