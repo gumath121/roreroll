@@ -14,7 +14,7 @@ const products = [
     category: "hot",
     price: 42.90,
     description: "Salmão fresco, cream cheese Philadelphia e cheiro verde.",
-    image: "imagens/big-hot.jpg"
+    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const products = [
     category: "hot",
     price: 45.90,
     description: "Mais salmão, cream cheese Philadelphia, cheiro verde e arroz japonês.",
-    image: "imagens/big-hot-salmao-especial.jpg"
+    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const products = [
     category: "hot",
     price: 49.90,
     description: "Salmão fresco, shimeji, cream cheese Philadelphia, cheiro verde e arroz japonês.",
-    image: "imagens/big-hot-shimeji.jpg"
+    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const products = [
     category: "hot",
     price: 54.90,
     description: "Salmão fresco, camarão, cream cheese Philadelphia, cheiro verde e arroz japonês.",
-    image: "imagens/big-hot-camarao.jpg"
+    image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const products = [
     category: "hot",
     price: 59.90,
     description: "Salmão fresco, muito cream cheese Philadelphia, cheiro verde e arroz japonês.",
-    image: "imagens/big-hot-extreme.jpg"
+    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ const products = [
     category: "hot",
     price: 45.90,
     description: "Salmão grelhado, cream cheese e arroz japonês.",
-    image: "imagens/burger-hot-salmao.jpg"
+    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 7,
@@ -62,7 +62,7 @@ const products = [
     category: "hot",
     price: 49.90,
     description: "Camarão grelhado, cream cheese e arroz japonês.",
-    image: "imagens/burger-hot-camarao.jpg"
+    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 8,
@@ -70,7 +70,7 @@ const products = [
     category: "hot",
     price: 29.90,
     description: "10 hot rolls de salmão fresco, cream cheese Philadelphia e arroz japonês, empanados e fritos.",
-    image: "imagens/hot-roll.jpg"
+    image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80"
   },
 
   // TEMAKIS RECHEADOS FRITOS
@@ -80,7 +80,7 @@ const products = [
     category: "temaki",
     price: 29.90,
     description: "Arroz japonês, salmão, cream cheese, cebolinha e alga nori.",
-    image: "imagens/temaki-tradicional.jpg"
+    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 10,
@@ -89,7 +89,7 @@ const products = [
     price: 34.90,
     description: "Arroz japonês, salmão, Philadelphia, cebolinha e alga nori.",
     badge: "Mais pedido",
-    image: "imagens/temaki-salmao-philadelphia.jpg"
+    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 11,
@@ -97,7 +97,7 @@ const products = [
     category: "temaki",
     price: 36.90,
     description: "Arroz japonês, salmão, Philadelphia, cebolinha, Doritos crocante e alga nori.",
-    image: "imagens/temaki-doritos.jpg"
+    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 12,
@@ -105,7 +105,7 @@ const products = [
     category: "temaki",
     price: 38.90,
     description: "Arroz japonês, camarão, Philadelphia, cebolinha e alga nori.",
-    image: "imagens/temaki-ebi.jpg"
+    image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 13,
@@ -114,7 +114,7 @@ const products = [
     price: 38.90,
     description: "Arroz japonês, salmão, Philadelphia, cebolinha, alga nori e camada extra de Philadelphia.",
     badge: "Mais recheado",
-    image: "imagens/temaki-extreme.jpg"
+    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
   },
 
   // COMBOS
@@ -124,7 +124,7 @@ const products = [
     category: "combos",
     price: 110.90,
     description: "2 Big Hots de camarão + 1 porção de Hot Roll (10 unidades).",
-    image: "imagens/combo-rorec-roll.jpg"
+    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 15,
@@ -132,7 +132,7 @@ const products = [
     category: "combos",
     price: 99.90,
     description: "2 Big Hots + 1 porção de Hot Roll (10 unidades).",
-    image: "imagens/combo-rore-roll.jpg"
+    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 16,
@@ -141,7 +141,7 @@ const products = [
     price: 129.90,
     description: "2 Big Hot Extreme + escolha de acompanhamento.",
     badge: "Combo especial",
-    image: "imagens/combo-big-hot-extreme.jpg",
+    image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80",
     options: ["Big Temaki", "Hot Roll — 10 unidades"]
   }
 ];
