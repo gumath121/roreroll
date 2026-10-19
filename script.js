@@ -6,6 +6,12 @@
 
 const WHATSAPP_NUMBER = "5515992025858";
 
+const COUPON_CODE = "RORE20";
+const COUPON_PERCENT = 10;
+const COUPON_MINIMUM = 40;
+
+let couponApplied = false;
+
 const products = [
   // BIG HOTS
   {
