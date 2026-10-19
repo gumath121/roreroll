@@ -1,7 +1,7 @@
 
 /* =========================================
    RORE ROLL — DELIVERY
-   Carrinho e pedidos pelo WhatsApp
+   Carrinho, faixa mobile e pedidos WhatsApp
 ========================================= */
 
 const WHATSAPP_NUMBER = "5515992025858";
@@ -153,7 +153,6 @@ const products = [
     image: "combobig.jpg",
     options: ["Big Temaki", "Hot Roll — 10 unidades"]
   },
-  
   {
     id: 18,
     name: "Combo Rorec Roll",
@@ -205,7 +204,6 @@ const products = [
     image: "guarana2l.jpg"
   }
 ];
-
 
 let cart = [];
 let activeCategory = "todos";
@@ -281,6 +279,7 @@ function renderProducts() {
 
       <div class="product-info">
         <h3>${escapeHTML(product.name)}</h3>
+
         <p class="product-description">
           ${escapeHTML(product.description)}
         </p>
@@ -298,6 +297,7 @@ function renderProducts() {
 
         <div class="product-bottom">
           <span class="product-price">${money(product.price)}</span>
+
           <button
             class="add-to-cart"
             type="button"
@@ -314,8 +314,10 @@ function renderProducts() {
 function setCategory(category) {
   activeCategory = category;
 
-  $$(".category-button").forEach((button) => {
+  // O HTML usa a classe .category-tab
+  $$(".category-tab").forEach((button) => {
     const isActive = button.dataset.category === category;
+
     button.classList.toggle("active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
@@ -357,8 +359,9 @@ function addToCart(productId) {
     });
   }
 
+  // Atualiza os valores, mas NÃO abre o carrinho automaticamente.
   renderCart();
- }
+}
 
 function changeQuantity(key, amount) {
   const item = cart.find((product) => product.key === key);
@@ -479,6 +482,42 @@ function applyCoupon() {
   renderCart();
 }
 
+/* =========================================
+   FAIXA FIXA "MINHA COMPRA" — CELULAR
+========================================= */
+
+function updateMobileCartBar() {
+  const bar = $("#mobile-cart-bar");
+  const count = $("#mobile-cart-count");
+  const total = $("#mobile-cart-total");
+
+  if (!bar) return;
+
+  const quantity = cartQuantity();
+  const hasItems = quantity > 0;
+
+  // A faixa só aparece quando há produtos no pedido.
+  bar.classList.toggle("visible", hasItems);
+  bar.setAttribute(
+    "aria-label",
+    hasItems
+      ? `Ver minha compra com ${quantity} ${quantity === 1 ? "item" : "itens"}, total ${money(cartTotal())}`
+      : "Minha compra vazia"
+  );
+
+  if (count) {
+    count.textContent = `${quantity} ${quantity === 1 ? "item" : "itens"}`;
+  }
+
+  if (total) {
+    total.textContent = money(cartTotal());
+  }
+}
+
+/* =========================================
+   ATUALIZAR CONTEÚDO DO CARRINHO
+========================================= */
+
 function renderCart() {
   const itemsContainer = $("#cart-items");
   const emptyMessage = $("#cart-empty");
@@ -487,11 +526,13 @@ function renderCart() {
   const subtotal = $("#subtotal");
   const checkoutSubtotal = $("#checkout-subtotal");
 
-  if (!itemsContainer) return;
+  if (count) {
+    count.textContent = cartQuantity();
+  }
 
-  if (count) count.textContent = cartQuantity();
-
-  if (subtotal) subtotal.textContent = money(cartSubtotal());
+  if (subtotal) {
+    subtotal.textContent = money(cartSubtotal());
+  }
 
   if (checkoutSubtotal) {
     checkoutSubtotal.textContent = money(cartSubtotal());
@@ -499,48 +540,58 @@ function renderCart() {
 
   const hasItems = cart.length > 0;
 
-  if (emptyMessage) emptyMessage.hidden = hasItems;
-  if (bottom) bottom.hidden = !hasItems;
+  if (emptyMessage) {
+    emptyMessage.hidden = hasItems;
+  }
 
-  itemsContainer.innerHTML = cart.map((item) => `
-    <div class="cart-item">
-      <div>
-        <h3>${escapeHTML(item.name)}</h3>
-        ${item.option
-          ? `<p class="product-description">Acompanhamento: ${escapeHTML(item.option)}</p>`
-          : ""}
-        <div class="cart-item-price">
-          ${money(item.price * item.quantity)}
-        </div>
+  if (bottom) {
+    bottom.hidden = !hasItems;
+  }
 
-        <div class="cart-item-controls">
-          <button
-            class="quantity-button"
-            type="button"
-            data-decrease="${escapeHTML(item.key)}"
-            aria-label="Diminuir quantidade"
-          >−</button>
+  if (itemsContainer) {
+    itemsContainer.innerHTML = cart.map((item) => `
+      <div class="cart-item">
+        <div>
+          <h3>${escapeHTML(item.name)}</h3>
 
-          <span class="quantity-value">${item.quantity}</span>
+          ${item.option
+            ? `<p class="product-description">Acompanhamento: ${escapeHTML(item.option)}</p>`
+            : ""}
 
-          <button
-            class="quantity-button"
-            type="button"
-            data-increase="${escapeHTML(item.key)}"
-            aria-label="Aumentar quantidade"
-          >+</button>
+          <div class="cart-item-price">
+            ${money(item.price * item.quantity)}
+          </div>
 
-          <button
-            class="remove-item"
-            type="button"
-            data-remove="${escapeHTML(item.key)}"
-          >Remover</button>
+          <div class="cart-item-controls">
+            <button
+              class="quantity-button"
+              type="button"
+              data-decrease="${escapeHTML(item.key)}"
+              aria-label="Diminuir quantidade"
+            >−</button>
+
+            <span class="quantity-value">${item.quantity}</span>
+
+            <button
+              class="quantity-button"
+              type="button"
+              data-increase="${escapeHTML(item.key)}"
+              aria-label="Aumentar quantidade"
+            >+</button>
+
+            <button
+              class="remove-item"
+              type="button"
+              data-remove="${escapeHTML(item.key)}"
+            >Remover</button>
+          </div>
         </div>
       </div>
-    </div>
-  `).join("");
+    `).join("");
+  }
 
   updateCouponDisplay();
+  updateMobileCartBar();
 }
 
 /* =========================================
@@ -569,11 +620,15 @@ function openCheckout() {
   }
 
   closeCart();
+
   $("#checkout-overlay")?.classList.add("active");
   document.body.classList.add("no-scroll");
 
   const checkoutTotal = $("#checkout-subtotal");
-  if (checkoutTotal) checkoutTotal.textContent = money(cartSubtotal());
+
+  if (checkoutTotal) {
+    checkoutTotal.textContent = money(cartSubtotal());
+  }
 
   updateCouponDisplay();
 }
@@ -597,10 +652,14 @@ function updateChangeField() {
   if (!payment || !changeField) return;
 
   const needsChange = payment.value === "Dinheiro";
+
   changeField.hidden = !needsChange;
 
   const changeInput = changeField.querySelector("input");
-  if (changeInput) changeInput.required = needsChange;
+
+  if (changeInput) {
+    changeInput.required = needsChange;
+  }
 }
 
 /* =========================================
@@ -617,6 +676,7 @@ function submitOrder(event) {
   }
 
   const form = $("#checkout-form");
+
   if (!form || !form.reportValidity()) return;
 
   const formData = new FormData(form);
@@ -675,7 +735,7 @@ function submitOrder(event) {
   );
 
   if (customer.payment === "Dinheiro") {
-    lines.push(`Troco para: ${customer.change}`);
+    lines.push(`Troco para: ${customer.change || "Não informado"}`);
   }
 
   if (customer.notes) {
@@ -685,7 +745,9 @@ function submitOrder(event) {
   lines.push("", "Aguardo a confirmação do pedido. Obrigado!");
 
   const message = lines.join("\n");
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+  const url =
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
   window.open(url, "_blank", "noopener,noreferrer");
 }
@@ -696,36 +758,41 @@ function submitOrder(event) {
 
 document.addEventListener("click", (event) => {
   const addButton = event.target.closest("[data-add]");
+
   if (addButton) {
     addToCart(Number(addButton.dataset.add));
     return;
   }
 
   const increaseButton = event.target.closest("[data-increase]");
+
   if (increaseButton) {
     changeQuantity(increaseButton.dataset.increase, 1);
     return;
   }
 
   const decreaseButton = event.target.closest("[data-decrease]");
+
   if (decreaseButton) {
     changeQuantity(decreaseButton.dataset.decrease, -1);
     return;
   }
 
   const removeButton = event.target.closest("[data-remove]");
+
   if (removeButton) {
     removeFromCart(removeButton.dataset.remove);
     return;
   }
 
-  const categoryButton = event.target.closest("[data-category]");
+  const categoryButton = event.target.closest(".category-tab");
+
   if (categoryButton) {
     setCategory(categoryButton.dataset.category);
   }
 });
 
-// CUPOM DE DESCONTO
+// CUPOM
 $("#apply-coupon")?.addEventListener("click", applyCoupon);
 
 $("#coupon-code")?.addEventListener("keydown", (event) => {
@@ -738,8 +805,13 @@ $("#coupon-code")?.addEventListener("keydown", (event) => {
 // BUSCA
 $("#search-input")?.addEventListener("input", renderProducts);
 
-// CARRINHO
+// ABRIR CARRINHO PELO CABEÇALHO
 $("#open-cart")?.addEventListener("click", openCart);
+
+// ABRIR CARRINHO PELA FAIXA FIXA NO CELULAR
+$("#mobile-cart-bar")?.addEventListener("click", openCart);
+
+// FECHAR CARRINHO
 $("#close-cart")?.addEventListener("click", closeCart);
 $("#cart-overlay")?.addEventListener("click", closeCart);
 
@@ -753,8 +825,10 @@ $("#checkout-overlay")?.addEventListener("click", (event) => {
   }
 });
 
+// PAGAMENTO
 $("#payment")?.addEventListener("change", updateChangeField);
 
+// ENVIAR PEDIDO
 $("#checkout-form")?.addEventListener("submit", submitOrder);
 
 // BOTÃO DE COMBOS
