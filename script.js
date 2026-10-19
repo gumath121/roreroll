@@ -131,7 +131,7 @@ const products = [
     category: "temaki",
     price: 38.90,
     description: "Arroz japonês, camarão, Philadelphia, cebolinha e alga nori.",
-    image: "https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=80"
+    image: "temakifritoebi.jpg"
   },
 
   // COMBOS
