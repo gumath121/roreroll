@@ -153,6 +153,7 @@ const products = [
     image: "combobig.jpg",
     options: ["Big Temaki", "Hot Roll — 10 unidades"]
   },
+  
   {
     id: 18,
     name: "Combo Rorec Roll",
@@ -160,8 +161,51 @@ const products = [
     price: 99.90,
     description: "Combo Rorec Roll com camarão.",
     image: "combororecamarao.jpg"
+  },
+
+  // BEBIDAS
+  {
+    id: 19,
+    name: "Coca-Cola Lata 350 ml",
+    category: "bebidas",
+    price: 7.00,
+    description: "Coca-Cola lata 350 ml, bem gelada.",
+    image: "cocacola350.jpg"
+  },
+  {
+    id: 20,
+    name: "Sprite Lata 350 ml",
+    category: "bebidas",
+    price: 7.00,
+    description: "Sprite lata 350 ml, bem gelada.",
+    image: "sprite350.jpg"
+  },
+  {
+    id: 21,
+    name: "Fanta Laranja Lata 350 ml",
+    category: "bebidas",
+    price: 7.00,
+    description: "Fanta Laranja lata 350 ml, bem gelada.",
+    image: "fanta350.jpg"
+  },
+  {
+    id: 22,
+    name: "Coca-Cola 2 Litros",
+    category: "bebidas",
+    price: 14.00,
+    description: "Coca-Cola garrafa de 2 litros.",
+    image: "cocacola2l.jpg"
+  },
+  {
+    id: 23,
+    name: "Guaraná 2 Litros",
+    category: "bebidas",
+    price: 12.00,
+    description: "Guaraná garrafa de 2 litros.",
+    image: "guarana2l.jpg"
   }
 ];
+
 
 let cart = [];
 let activeCategory = "todos";
