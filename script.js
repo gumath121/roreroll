@@ -615,6 +615,7 @@ function submitOrder(event) {
   window.open(url, "_blank", "noopener,noreferrer");
 }
 
+
 /* =========================================
    EVENTOS
 ========================================= */
@@ -650,12 +651,25 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// CUPOM DE DESCONTO
+$("#apply-coupon")?.addEventListener("click", applyCoupon);
+
+$("#coupon-code")?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    applyCoupon();
+  }
+});
+
+// BUSCA
 $("#search-input")?.addEventListener("input", renderProducts);
 
+// CARRINHO
 $("#open-cart")?.addEventListener("click", openCart);
 $("#close-cart")?.addEventListener("click", closeCart);
 $("#cart-overlay")?.addEventListener("click", closeCart);
 
+// FINALIZAÇÃO DO PEDIDO
 $("#go-checkout")?.addEventListener("click", openCheckout);
 $("#close-checkout")?.addEventListener("click", closeCheckout);
 
@@ -669,11 +683,13 @@ $("#payment")?.addEventListener("change", updateChangeField);
 
 $("#checkout-form")?.addEventListener("submit", submitOrder);
 
+// BOTÃO DE COMBOS
 $("#show-combos")?.addEventListener("click", () => {
   setCategory("combos");
   $("#cardapio")?.scrollIntoView({ behavior: "smooth" });
 });
 
+// FECHAR COM ESC
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeCart();
