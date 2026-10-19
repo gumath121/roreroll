@@ -22,7 +22,7 @@ const products = [
     category: "hot",
     price: 45.90,
     description: "Salmão fresco ou grelhado, cream cheese Philadelphia, crocância irresistível de Doritos, cebolinha, gergelim e molho tarê Sakura. Crocante por fora, cremoso por dentro e com o sabor inconfundível de Doritos!",
-    image: "bighotdoritos.jpg"
+    image: "bighotedoritos.jpg"
   },
   {
     id: 3,
