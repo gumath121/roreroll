@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#c8202f">
+    <meta name="description" content="Rore Roll - Delivery japonês. Hot rolls, temakis e combos preparados na hora.">
+
+    <title>Rore Roll | Delivery Japonês</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <div class="top-bar">
+        🍣 Feito na hora, do jeitinho que você gosta
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <a href="#" class="logo">
+            <span class="logo-icon">R<span>R</span></span>
+
+            <span class="logo-text">
+                <strong>RORE ROLL</strong>
+                <small>DELIVERY JAPONÊS</small>
+            </span>
+        </a>
+
+        <nav class="navigation">
+            <a href="#inicio">Início</a>
+            <a href="#cardapio">Cardápio</a>
+            <a href="#combos">Combos</a>
+        </nav>
+
+        <button class="cart-button" id="open-cart">
+            🛍 Meu pedido
+            <span id="cart-count">0</span>
+        </button>
+
+    </header>
+
+    <main>
+
+        <!-- BANNER PRINCIPAL -->
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    SEU JAPONÊS FAVORITO
+                </span>
+
+                <h1>
+                    Seu próximo sushi
+                    favorito está
+                    <span>aqui.</span>
+                </h1>
+
+                <p>
+                    Hot rolls crocantes, temakis recheados
+                    e combos irresistíveis.
+                    Escolha seus favoritos e peça sem complicação.
+                </p>
+
+                <a href="#cardapio" class="main-button">
+                    Explorar cardápio
+                    <span>→</span>
+                </a>
+
+                <div class="hero-benefits">
+                    <span>✓ Pedido fácil</span>
+                    <span>✓ Feito na hora</span>
+                    <span>✓ Pelo WhatsApp</span>
+                </div>
+
+            </div>
+
+            <div class="hero-image">
+
+                <img
+                    src="imagens/banner-sushi.jpg"
+                    alt="Seleção de pratos japoneses"
+                    onerror="this.style.display='none'"
+                >
+
+                <div class="hero-image-label">
+                    <small>RORE ROLL</small>
+                    <strong>Sabor em cada mordida.</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- DIFERENCIAIS -->
+        <section class="benefits">
+
+            <div class="benefit-item">
+                <span>🍱</span>
+                <div>
+                    <strong>Combos especiais</strong>
+                    <small>Para matar a vontade</small>
+                </div>
+            </div>
+
+            <div class="benefit-item">
+                <span>🔥</span>
+                <div>
+                    <strong>Empanados na hora</strong>
+                    <small>Crocância a cada mordida</small>
+                </div>
+            </div>
+
+            <div class="benefit-item">
+                <span>💬</span>
+                <div>
+                    <strong>Pedido pelo WhatsApp</strong>
+                    <small>Simples e direto</small>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CARDÁPIO -->
+        <section class="menu-section" id="cardapio">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">ESCOLHA SEUS FAVORITOS</span>
+                    <h2>Nosso <span>cardápio</span></h2>
+                </div>
+
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Buscar produto..."
+                    aria-label="Buscar produto"
+                >
+
+            </div>
+
+            <!-- CATEGORIAS -->
+            <div class="category-tabs">
+
+                <button class="category-tab active" data-category="todos">
+                    Todos
+                </button>
+
+                <button class="category-tab" data-category="hot">
+                    Hot Rolls e Burgers
+                </button>
+
+                <button class="category-tab" data-category="temaki">
+                    Temakis
+                </button>
+
+                <button class="category-tab" data-category="combos">
+                    Combos
+                </button>
+
+            </div>
+
+            <!-- OS PRODUTOS SERÃO INSERIDOS PELO JAVASCRIPT -->
+            <div class="product-grid" id="product-grid"></div>
+
+        </section>
+
+        <!-- DESTAQUE DE COMBOS -->
+        <section class="combo-banner" id="combos">
+
+            <div class="combo-content">
+
+                <span class="eyebrow">PRA COMPARTILHAR</span>
+
+                <h2>
+                    Combo bom é
+                    combo <span>completo.</span>
+                </h2>
+
+                <p>
+                    Escolha seu combo favorito e aproveite
+                    o sabor da Rore Roll.
+                </p>
+
+                <button
+                    class="main-button"
+                    id="show-combos"
+                    type="button"
+                >
+                    Ver combos →
+                </button>
+
+            </div>
+
+            <div class="combo-image">
+                <img
+                    src="imagens/combos.jpg"
+                    alt="Combos de sushi da Rore Roll"
+                    onerror="this.style.display='none'"
+                >
+            </div>
+
+        </section>
+
+        <!-- COMO PEDIR -->
+        <section class="how-to-order">
+
+            <div class="section-heading centered">
+                <div>
+                    <span class="eyebrow">SEM COMPLICAÇÃO</span>
+                    <h2>Peça em <span>3 passos</span></h2>
+                </div>
+            </div>
+
+            <div class="steps">
+
+                <article class="step">
+                    <span class="step-icon">🍣</span>
+                    <h3>Escolha seus pratos</h3>
+                    <p>Adicione seus favoritos ao carrinho.</p>
+                </article>
+
+                <article class="step">
+                    <span class="step-icon">🛒</span>
+                    <h3>Confira seu pedido</h3>
+                    <p>Revise os itens e informe seus dados.</p>
+                </article>
+
+                <article class="step">
+                    <span class="step-icon">💬</span>
+                    <h3>Envie pelo WhatsApp</h3>
+                    <p>A loja recebe o pedido para confirmação.</p>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+
+        <a href="#" class="logo">
+            <span class="logo-icon">R<span>R</span></span>
+
+            <span class="logo-text">
+                <strong>RORE ROLL</strong>
+                <small>DELIVERY JAPONÊS</small>
+            </span>
+        </a>
+
+        <p>
+            Sabor, qualidade e experiência em cada mordida.
+        </p>
+
+        <small>
+            © <span id="year"></span> Rore Roll.
+            Todos os direitos reservados.
+        </small>
+
+    </footer>
+
+    <!-- CARRINHO LATERAL -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <aside class="cart-drawer" id="cart-drawer">
+
+        <div class="cart-header">
+
+            <div>
+                <span class="eyebrow">SEU PEDIDO</span>
+                <h2>Meu carrinho</h2>
+            </div>
+
+            <button id="close-cart" class="close-button" aria-label="Fechar carrinho">
+                ✕
+            </button>
+
+        </div>
+
+        <div id="cart-items" class="cart-items"></div>
+
+        <div id="cart-empty" class="cart-empty">
+            <span>🛍️</span>
+            <h3>Seu carrinho está vazio</h3>
+            <p>Escolha algo gostoso no cardápio para começar.</p>
+        </div>
+
+        <div id="cart-bottom" class="cart-bottom">
+
+            <div class="subtotal">
+                <span>Subtotal</span>
+                <strong id="subtotal">R$ 0,00</strong>
+            </div>
+
+            <p>
+                A taxa de entrega será confirmada pela equipe.
+            </p>
+
+            <button id="go-checkout" class="main-button full-button">
+                Continuar pedido →
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- FINALIZAÇÃO DO PEDIDO -->
+    <div class="checkout-overlay" id="checkout-overlay">
+
+        <section class="checkout-modal">
+
+            <div class="cart-header">
+
+                <div>
+                    <span class="eyebrow">SÓ MAIS UM PASSO</span>
+                    <h2>Finalizar pedido</h2>
+                </div>
+
+                <button
+                    id="close-checkout"
+                    class="close-button"
+                    aria-label="Fechar finalização"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+            <p class="checkout-description">
+                Informe os dados para enviar seu pedido
+                diretamente à Rore Roll pelo WhatsApp.
+            </p>
+
+            <form id="checkout-form">
+
+                <label>
+                    Nome completo
+                    <input
+                        type="text"
+                        name="name"
+                        autocomplete="name"
+                        placeholder="Seu nome"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Telefone
+                    <input
+                        type="tel"
+                        name="phone"
+                        autocomplete="tel"
+                        placeholder="(15) 99999-9999"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Bairro
+                    <input
+                        type="text"
+                        name="neighborhood"
+                        placeholder="Seu bairro"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Rua, número e complemento
+                    <input
+                        type="text"
+                        name="address"
+                        autocomplete="street-address"
+                        placeholder="Endereço completo"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Ponto de referência
+                    <input
+                        type="text"
+                        name="reference"
+                        placeholder="Opcional"
+                    >
+                </label>
+
+                <label>
+                    Forma de pagamento
+                    <select name="payment" id="payment" required>
+                        <option value="">Selecione</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão de crédito">Cartão de crédito</option>
+                        <option value="Cartão de débito">Cartão de débito</option>
+                    </select>
+                </label>
+
+                <label id="change-field" hidden>
+                    Troco para quanto?
+                    <input
+                        type="text"
+                        name="change"
+                        placeholder="Ex.: R$ 100,00"
+                    >
+                </label>
+
+                <label>
+                    Observações
+                    <textarea
+                        name="notes"
+                        rows="3"
+                        placeholder="Alguma observação? (opcional)"
+                    ></textarea>
+                </label>
+
+                <div class="checkout-total">
+                    <span>Subtotal dos produtos</span>
+                    <strong id="checkout-subtotal">R$ 0,00</strong>
+                </div>
+
+                <p class="delivery-warning">
+                    A taxa de entrega não está incluída no subtotal.
+                </p>
+
+                <button type="submit" class="main-button full-button">
+                    Enviar pedido pelo WhatsApp →
+                </button>
+
+            </form>
+
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
