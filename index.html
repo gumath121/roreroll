@@ -295,6 +295,31 @@
                 <span>Subtotal</span>
                 <strong id="subtotal">R$ 0,00</strong>
             </div>
+            
+<!-- CUPOM DE DESCONTO -->
+<div class="coupon-box">
+  <label for="coupon-code">Tem um cupom de desconto?</label>
+  <div class="coupon-entry">
+    <input
+      type="text"
+      id="coupon-code"
+      placeholder="Digite seu cupom"
+      autocomplete="off"
+    >
+    <button type="button" id="apply-coupon">Aplicar</button>
+  </div>
+  <p id="coupon-message" aria-live="polite"></p>
+</div>
+
+<div id="cart-discount-row" class="coupon-summary-row" hidden>
+  <span>Desconto (RORE20)</span>
+  <strong id="cart-discount"></strong>
+</div>
+
+<div class="coupon-summary-row">
+  <span>Total dos produtos</span>
+  <strong id="cart-total"></strong>
+</div>
 
             <p>
                 A taxa de entrega será confirmada pela equipe.
