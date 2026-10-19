@@ -130,14 +130,6 @@ const products = [
 
   // COMBOS — PRODUTOS MANTIDOS
   {
-    id: 15,
-    name: "Combo Rorec Roll",
-    category: "combos",
-    price: 110.90,
-    description: "2 Big Hots de camarão + 1 porção de Hot Roll (10 unidades).",
-    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80"
-  },
-  {
     id: 16,
     name: "Combo Rore Roll",
     category: "combos",
