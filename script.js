@@ -358,8 +358,7 @@ function addToCart(productId) {
   }
 
   renderCart();
-  openCart();
-}
+ }
 
 function changeQuantity(key, amount) {
   const item = cart.find((product) => product.key === key);
