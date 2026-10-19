@@ -478,6 +478,7 @@ function renderCart() {
       </div>
     </div>
   `).join("");
+     updateCouponDisplay();
 }
 
 /* =========================================
