@@ -2251,3 +2251,9 @@ footer .brand-text span {
     height: 64px;
   }
 }
+/* POSICIONAR TEXTO MAIS À ESQUERDA NO DESKTOP */
+@media (min-width: 761px) {
+  .hero-content {
+    margin-left: -25px;
+  }
+}
