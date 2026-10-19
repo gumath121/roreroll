@@ -346,6 +346,78 @@ function cartQuantity() {
   return cart.reduce((total, item) => total + item.quantity, 0);
 }
 
+function couponDiscount() {
+  if (!couponApplied || cartSubtotal() < COUPON_MINIMUM) {
+    return 0;
+  }
+
+  return Math.round(cartSubtotal() * COUPON_PERCENT) / 100;
+}
+
+function cartTotal() {
+  return Math.max(0, cartSubtotal() - couponDiscount());
+}
+
+function updateCouponDisplay() {
+  const discount = couponDiscount();
+  const subtotal = cartSubtotal();
+
+  const discountRow = $("#cart-discount-row");
+
+  if (discountRow) {
+    discountRow.hidden = discount <= 0;
+  }
+
+  if ($("#cart-discount")) {
+    $("#cart-discount").textContent = `− ${money(discount)}`;
+  }
+
+  if ($("#cart-total")) {
+    $("#cart-total").textContent = money(cartTotal());
+  }
+
+  const message = $("#coupon-message");
+
+  if (message && couponApplied && subtotal < COUPON_MINIMUM) {
+    message.textContent =
+      `O pedido mínimo para este cupom é ${money(COUPON_MINIMUM)}.`;
+    message.className = "error";
+  }
+}
+
+function applyCoupon() {
+  const input = $("#coupon-code");
+  const message = $("#coupon-message");
+
+  if (!input || !message) return;
+
+  const code = input.value.trim().toUpperCase();
+
+  if (code !== COUPON_CODE) {
+    couponApplied = false;
+    message.textContent = "Cupom inválido. Confira o código digitado.";
+    message.className = "error";
+    renderCart();
+    return;
+  }
+
+  if (cartSubtotal() < COUPON_MINIMUM) {
+    couponApplied = false;
+    message.textContent =
+      `O pedido mínimo para este cupom é ${money(COUPON_MINIMUM)}.`;
+    message.className = "error";
+    renderCart();
+    return;
+  }
+
+  couponApplied = true;
+  message.textContent =
+    `Cupom aplicado! Você economizou ${money(couponDiscount())}.`;
+  message.className = "success";
+
+  renderCart();
+}
+
 function renderCart() {
   const itemsContainer = $("#cart-items");
   const emptyMessage = $("#cart-empty");
