@@ -2229,3 +2229,25 @@ footer .brand-text span {
     font-size: 12px;
   }
 }
+
+/* LOGO EM DESTAQUE NO CABEÇALHO */
+.header .logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header .logo-image {
+  display: block;
+  width: 100px;
+  height: 76px;
+  object-fit: contain;
+}
+
+/* LOGO NO CELULAR */
+@media (max-width: 760px) {
+  .header .logo-image {
+    width: 82px;
+    height: 64px;
+  }
+}
