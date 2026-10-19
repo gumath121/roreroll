@@ -2257,3 +2257,82 @@ footer .brand-text span {
     margin-left: -25px;
   }
 }
+
+/* CUPOM DE DESCONTO */
+.coupon-box {
+  margin: 16px 0;
+  padding: 14px;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-radius: 10px;
+}
+
+.coupon-box label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.coupon-entry {
+  display: flex;
+  gap: 8px;
+}
+
+.coupon-entry input {
+  min-width: 0;
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  text-transform: uppercase;
+}
+
+.coupon-entry button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 7px;
+  background: #c62836;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#coupon-message {
+  margin: 9px 0 0;
+  font-size: 13px;
+}
+
+#coupon-message.success {
+  color: #218838;
+}
+
+#coupon-message.error {
+  color: #c62836;
+}
+
+.coupon-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#cart-discount {
+  color: #218838;
+}
+
+#cart-total {
+  font-weight: 700;
+}
+
+@media (max-width: 380px) {
+  .coupon-entry {
+    flex-wrap: wrap;
+  }
+
+  .coupon-entry button {
+    width: 100%;
+  }
+}
+
