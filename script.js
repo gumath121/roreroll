@@ -158,7 +158,7 @@ const products = [
     id: 18,
     name: "Combo Rorec Roll",
     category: "combos",
-    price: 99.90,
+    price: 110.90,
     description: "Combo Rorec Roll com camarão.",
     image: "combororecamarao.jpg"
   },
