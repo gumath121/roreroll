@@ -1,4 +1,3 @@
-
 /* =========================================
    RORE ROLL — DELIVERY
    Carrinho, faixa mobile e pedidos WhatsApp
@@ -229,6 +228,16 @@ function escapeHTML(value) {
 }
 
 /* =========================================
+   OPÇÕES DE SALMÃO
+========================================= */
+
+function hasSalmon(product) {
+  // Os combos com Big Hot também permitem escolher o preparo do salmão.
+  return /salm[aã]o/i.test(`${product.name} ${product.description}`) ||
+    [10, 16, 17].includes(product.id);
+}
+
+/* =========================================
    PRODUTOS
 ========================================= */
 
@@ -284,6 +293,26 @@ function renderProducts() {
           ${escapeHTML(product.description)}
         </p>
 
+        ${hasSalmon(product) ? `
+          <div class="form-group product-option salmon-options">
+            <label for="salmon-preparation-${product.id}">Preparo do salmão</label>
+            <select id="salmon-preparation-${product.id}" required>
+              <option value="" selected disabled>Escolha: fresco ou grelhado</option>
+              <option value="Fresco">Fresco</option>
+              <option value="Grelhado">Grelhado</option>
+            </select>
+          </div>
+
+          <div class="form-group product-option salmon-options">
+            <label for="scallions-${product.id}">Cebolinha</label>
+            <select id="scallions-${product.id}" required>
+              <option value="" selected disabled>Escolha uma opção</option>
+              <option value="Com cebolinha">Com cebolinha</option>
+              <option value="Sem cebolinha">Sem cebolinha</option>
+            </select>
+          </div>
+        ` : ""}
+
         ${product.options ? `
           <div class="form-group product-option">
             <label for="option-${product.id}">Acompanhamento</label>
@@ -314,7 +343,6 @@ function renderProducts() {
 function setCategory(category) {
   activeCategory = category;
 
-  // O HTML usa a classe .category-tab
   $$(".category-tab").forEach((button) => {
     const isActive = button.dataset.category === category;
 
@@ -334,15 +362,43 @@ function addToCart(productId) {
   if (!product) return;
 
   let option = "";
+  let salmonPreparation = "";
+  let scallions = "";
+
+  if (hasSalmon(product)) {
+    const preparationSelect = $(`#salmon-preparation-${product.id}`);
+    const scallionsSelect = $(`#scallions-${product.id}`);
+
+    salmonPreparation = preparationSelect?.value || "";
+    scallions = scallionsSelect?.value || "";
+
+    if (!salmonPreparation || !scallions) {
+      alert(
+        "Escolha o preparo do salmão e se deseja cebolinha antes de adicionar ao carrinho."
+      );
+
+      if (!salmonPreparation) {
+        preparationSelect?.focus();
+      } else {
+        scallionsSelect?.focus();
+      }
+
+      return;
+    }
+  }
 
   if (product.options) {
     const select = $(`#option-${product.id}`);
     option = select?.value || product.options[0];
   }
 
-  const cartKey = option
-    ? `${product.id}-${option}`
-    : String(product.id);
+  // Cada combinação de escolhas vira um item próprio no carrinho.
+  const cartKey = [
+    product.id,
+    option,
+    salmonPreparation,
+    scallions
+  ].join("-");
 
   const existing = cart.find((item) => item.key === cartKey);
 
@@ -355,11 +411,13 @@ function addToCart(productId) {
       name: product.name,
       price: product.price,
       quantity: 1,
-      option
+      option,
+      salmonPreparation,
+      scallions
     });
   }
 
-  // Atualiza os valores, mas NÃO abre o carrinho automaticamente.
+  // Atualiza os valores sem abrir o carrinho automaticamente.
   renderCart();
 }
 
@@ -496,8 +554,8 @@ function updateMobileCartBar() {
   const quantity = cartQuantity();
   const hasItems = quantity > 0;
 
-  // A faixa só aparece quando há produtos no pedido.
   bar.classList.toggle("visible", hasItems);
+
   bar.setAttribute(
     "aria-label",
     hasItems
@@ -553,6 +611,14 @@ function renderCart() {
       <div class="cart-item">
         <div>
           <h3>${escapeHTML(item.name)}</h3>
+
+          ${item.salmonPreparation
+            ? `<p class="product-description">Salmão: ${escapeHTML(item.salmonPreparation)}</p>`
+            : ""}
+
+          ${item.scallions
+            ? `<p class="product-description">${escapeHTML(item.scallions)}</p>`
+            : ""}
 
           ${item.option
             ? `<p class="product-description">Acompanhamento: ${escapeHTML(item.option)}</p>`
@@ -708,9 +774,23 @@ function submitOrder(event) {
   ];
 
   cart.forEach((item) => {
+    const details = [];
+
+    if (item.salmonPreparation) {
+      details.push(`Salmão: ${item.salmonPreparation}`);
+    }
+
+    if (item.scallions) {
+      details.push(item.scallions);
+    }
+
+    if (item.option) {
+      details.push(`Acompanhamento: ${item.option}`);
+    }
+
     lines.push(
       `${item.quantity}x ${item.name}` +
-      (item.option ? ` (Acompanhamento: ${item.option})` : "") +
+      (details.length ? `\n   ${details.join(" | ")}` : "") +
       ` — ${money(item.price * item.quantity)}`
     );
   });
