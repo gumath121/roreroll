@@ -2518,5 +2518,35 @@ footer .brand-text span {
     min-height: 0;
     overflow-y: auto;
 }
+/* OPÇÕES DE PREPARO DO SALMÃO E CEBOLINHA */
+.salmon-options {
+  margin-top: 10px;
+}
+
+.salmon-options label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.salmon-options select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: #171717;
+  color: #fff;
+  font: inherit;
+  font-size: 0.86rem;
+}
+
+.salmon-options select:focus {
+  outline: 2px solid #e5232e;
+  outline-offset: 2px;
+}
+
 
 
