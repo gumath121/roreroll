@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -27,9 +28,9 @@
     <!-- CABEÇALHO -->
     <header class="header">
 
-       <a href="#" class="logo">
-  <img src="logo.png" alt="Rore Roll" class="logo-image">
-</a>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="Rore Roll" class="logo-image">
+        </a>
 
         <nav class="navigation">
             <a href="#inicio">Início</a>
@@ -146,30 +147,29 @@
             </div>
 
             <!-- CATEGORIAS -->
-<div class="category-tabs">
+            <div class="category-tabs">
 
-    <button class="category-tab active" data-category="todos">
-        Todos
-    </button>
+                <button class="category-tab active" data-category="todos">
+                    Todos
+                </button>
 
-    <button class="category-tab" data-category="hot">
-        Hot Rolls e Burgers
-    </button>
+                <button class="category-tab" data-category="hot">
+                    Hot Rolls e Burgers
+                </button>
 
-    <button class="category-tab" data-category="temaki">
-        Temakis
-    </button>
+                <button class="category-tab" data-category="temaki">
+                    Temakis
+                </button>
 
-    <button class="category-tab" data-category="combos">
-        Combos
-    </button>
+                <button class="category-tab" data-category="combos">
+                    Combos
+                </button>
 
-    <button class="category-tab" data-category="bebidas">
-        Bebidas
-    </button>
+                <button class="category-tab" data-category="bebidas">
+                    Bebidas
+                </button>
 
-</div>
-
+            </div>
 
             <!-- OS PRODUTOS SERÃO INSERIDOS PELO JAVASCRIPT -->
             <div class="product-grid" id="product-grid"></div>
@@ -240,7 +240,7 @@
                 <article class="step">
                     <span class="step-icon">💬</span>
                     <h3>Envie pelo WhatsApp</h3>
-                    <p>A loja recebe o pedido para confirmação.</p>
+                    <p>A loja recebe o pedido para confirmar o frete e o valor final.</p>
                 </article>
 
             </div>
@@ -250,34 +250,33 @@
     </main>
 
     <!-- RODAPÉ -->
-<footer class="footer">
+    <footer class="footer">
 
-    <a href="#inicio" class="logo">
-        <img src="logo.png" alt="Rore Roll" class="logo-image footer-logo-image">
-    </a>
+        <a href="#inicio" class="logo">
+            <img src="logo.png" alt="Rore Roll" class="logo-image footer-logo-image">
+        </a>
 
-    <p>
-        Sabor, qualidade e experiência em cada mordida.
-    </p>
+        <p>
+            Sabor, qualidade e experiência em cada mordida.
+        </p>
 
-    <small>
-        © <span id="year"></span> Rore Roll.
-        Todos os direitos reservados.
-    </small>
+        <small>
+            © <span id="year"></span> Rore Roll.
+            Todos os direitos reservados.
+        </small>
 
-</footer>
+    </footer>
 
-
-<!-- FAIXA FIXA DO CARRINHO NO CELULAR -->
-<button type="button" id="mobile-cart-bar" class="mobile-cart-bar" aria-label="Ver minha compra">
-    <span class="mobile-cart-icon">🛍️</span>
-    <span class="mobile-cart-info">
-        <strong>Minha compra</strong>
-        <small><span id="mobile-cart-count">0 itens</span> · Ver pedido</small>
-    </span>
-    <strong id="mobile-cart-total">R$ 0,00</strong>
-    <span class="mobile-cart-arrow">→</span>
-</button>
+    <!-- FAIXA FIXA DO CARRINHO NO CELULAR -->
+    <button type="button" id="mobile-cart-bar" class="mobile-cart-bar" aria-label="Ver minha compra">
+        <span class="mobile-cart-icon">🛍️</span>
+        <span class="mobile-cart-info">
+            <strong>Minha compra</strong>
+            <small><span id="mobile-cart-count">0 itens</span> · Ver pedido</small>
+        </span>
+        <strong id="mobile-cart-total">R$ 0,00</strong>
+        <span class="mobile-cart-arrow">→</span>
+    </button>
 
     <!-- CARRINHO LATERAL -->
     <div class="cart-overlay" id="cart-overlay"></div>
@@ -311,34 +310,37 @@
                 <span>Subtotal</span>
                 <strong id="subtotal">R$ 0,00</strong>
             </div>
-            
-<!-- CUPOM DE DESCONTO -->
-<div class="coupon-box">
-  <label for="coupon-code">Tem um cupom de desconto?</label>
-  <div class="coupon-entry">
-    <input
-      type="text"
-      id="coupon-code"
-      placeholder="Digite seu cupom"
-      autocomplete="off"
-    >
-    <button type="button" id="apply-coupon">Aplicar</button>
-  </div>
-  <p id="coupon-message" aria-live="polite"></p>
-</div>
 
-<div id="cart-discount-row" class="coupon-summary-row" hidden>
-  <span>Desconto (RORE20)</span>
-  <strong id="cart-discount"></strong>
-</div>
+            <!-- CUPOM DE DESCONTO -->
+            <div class="coupon-box">
+                <label for="coupon-code">Tem um cupom de desconto?</label>
 
-<div class="coupon-summary-row">
-  <span>Total dos produtos</span>
-  <strong id="cart-total"></strong>
-</div>
+                <div class="coupon-entry">
+                    <input
+                        type="text"
+                        id="coupon-code"
+                        placeholder="Digite seu cupom"
+                        autocomplete="off"
+                    >
+
+                    <button type="button" id="apply-coupon">Aplicar</button>
+                </div>
+
+                <p id="coupon-message" aria-live="polite"></p>
+            </div>
+
+            <div id="cart-discount-row" class="coupon-summary-row" hidden>
+                <span>Desconto (RORE20)</span>
+                <strong id="cart-discount"></strong>
+            </div>
+
+            <div class="coupon-summary-row">
+                <span>Total dos produtos</span>
+                <strong id="cart-total"></strong>
+            </div>
 
             <p>
-                A taxa de entrega será confirmada pela equipe.
+                A taxa de entrega será calculada pela equipe após conferir seu endereço.
             </p>
 
             <button id="go-checkout" class="main-button full-button">
@@ -372,8 +374,7 @@
             </div>
 
             <p class="checkout-description">
-                Informe os dados para enviar seu pedido
-                diretamente à Rore Roll pelo WhatsApp.
+                Informe seus dados para enviar o pedido à Rore Roll pelo WhatsApp.
             </p>
 
             <form id="checkout-form">
@@ -475,7 +476,10 @@
                 </div>
 
                 <p class="delivery-warning">
-                    A taxa de entrega não está incluída no subtotal.
+                    <strong>Taxa de entrega a confirmar.</strong>
+                    Após enviar seu pedido pelo WhatsApp, a equipe verificará
+                    seu endereço e informará o valor do frete e o total final
+                    antes de confirmar o pedido.
                 </p>
 
                 <button type="submit" class="main-button full-button">
