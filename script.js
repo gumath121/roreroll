@@ -1,3 +1,4 @@
+
 /* =========================================
    RORE ROLL — DELIVERY
    Carrinho, faixa mobile e pedidos WhatsApp
@@ -228,16 +229,6 @@ function escapeHTML(value) {
 }
 
 /* =========================================
-   OPÇÕES DE SALMÃO
-========================================= */
-
-function hasSalmon(product) {
-  // Os combos com Big Hot também permitem escolher o preparo do salmão.
-  return /salm[aã]o/i.test(`${product.name} ${product.description}`) ||
-    [10, 16, 17].includes(product.id);
-}
-
-/* =========================================
    PRODUTOS
 ========================================= */
 
@@ -293,26 +284,6 @@ function renderProducts() {
           ${escapeHTML(product.description)}
         </p>
 
-        ${hasSalmon(product) ? `
-          <div class="form-group product-option salmon-options">
-            <label for="salmon-preparation-${product.id}">Preparo do salmão</label>
-            <select id="salmon-preparation-${product.id}" required>
-              <option value="" selected disabled>Escolha: fresco ou grelhado</option>
-              <option value="Fresco">Fresco</option>
-              <option value="Grelhado">Grelhado</option>
-            </select>
-          </div>
-
-          <div class="form-group product-option salmon-options">
-            <label for="scallions-${product.id}">Cebolinha</label>
-            <select id="scallions-${product.id}" required>
-              <option value="" selected disabled>Escolha uma opção</option>
-              <option value="Com cebolinha">Com cebolinha</option>
-              <option value="Sem cebolinha">Sem cebolinha</option>
-            </select>
-          </div>
-        ` : ""}
-
         ${product.options ? `
           <div class="form-group product-option">
             <label for="option-${product.id}">Acompanhamento</label>
@@ -362,43 +333,15 @@ function addToCart(productId) {
   if (!product) return;
 
   let option = "";
-  let salmonPreparation = "";
-  let scallions = "";
-
-  if (hasSalmon(product)) {
-    const preparationSelect = $(`#salmon-preparation-${product.id}`);
-    const scallionsSelect = $(`#scallions-${product.id}`);
-
-    salmonPreparation = preparationSelect?.value || "";
-    scallions = scallionsSelect?.value || "";
-
-    if (!salmonPreparation || !scallions) {
-      alert(
-        "Escolha o preparo do salmão e se deseja cebolinha antes de adicionar ao carrinho."
-      );
-
-      if (!salmonPreparation) {
-        preparationSelect?.focus();
-      } else {
-        scallionsSelect?.focus();
-      }
-
-      return;
-    }
-  }
 
   if (product.options) {
     const select = $(`#option-${product.id}`);
     option = select?.value || product.options[0];
   }
 
-  // Cada combinação de escolhas vira um item próprio no carrinho.
-  const cartKey = [
-    product.id,
-    option,
-    salmonPreparation,
-    scallions
-  ].join("-");
+  const cartKey = option
+    ? `${product.id}-${option}`
+    : String(product.id);
 
   const existing = cart.find((item) => item.key === cartKey);
 
@@ -411,13 +354,10 @@ function addToCart(productId) {
       name: product.name,
       price: product.price,
       quantity: 1,
-      option,
-      salmonPreparation,
-      scallions
+      option
     });
   }
 
-  // Atualiza os valores sem abrir o carrinho automaticamente.
   renderCart();
 }
 
@@ -612,14 +552,6 @@ function renderCart() {
         <div>
           <h3>${escapeHTML(item.name)}</h3>
 
-          ${item.salmonPreparation
-            ? `<p class="product-description">Salmão: ${escapeHTML(item.salmonPreparation)}</p>`
-            : ""}
-
-          ${item.scallions
-            ? `<p class="product-description">${escapeHTML(item.scallions)}</p>`
-            : ""}
-
           ${item.option
             ? `<p class="product-description">Acompanhamento: ${escapeHTML(item.option)}</p>`
             : ""}
@@ -774,23 +706,9 @@ function submitOrder(event) {
   ];
 
   cart.forEach((item) => {
-    const details = [];
-
-    if (item.salmonPreparation) {
-      details.push(`Salmão: ${item.salmonPreparation}`);
-    }
-
-    if (item.scallions) {
-      details.push(item.scallions);
-    }
-
-    if (item.option) {
-      details.push(`Acompanhamento: ${item.option}`);
-    }
-
     lines.push(
       `${item.quantity}x ${item.name}` +
-      (details.length ? `\n   ${details.join(" | ")}` : "") +
+      (item.option ? ` (Acompanhamento: ${item.option})` : "") +
       ` — ${money(item.price * item.quantity)}`
     );
   });
@@ -809,9 +727,12 @@ function submitOrder(event) {
 
   lines.push(
     `*Total dos produtos: ${money(cartTotal())}`,
-    "Taxa de entrega: confirmar com a loja.",
     "",
-    `*Pagamento:* ${customer.payment}`
+    "*TAXA DE ENTREGA: A CONFIRMAR*",
+    "A equipe da Rore Roll vai verificar o endereço e informar o valor do frete.",
+    "O total final do pedido será confirmado pela loja antes da confirmação do pedido.",
+    "",
+    `*Forma de pagamento:* ${customer.payment}`
   );
 
   if (customer.payment === "Dinheiro") {
@@ -822,7 +743,11 @@ function submitOrder(event) {
     lines.push("", `Observações: ${customer.notes}`);
   }
 
-  lines.push("", "Aguardo a confirmação do pedido. Obrigado!");
+  lines.push(
+    "",
+    "Por favor, me informe o valor do frete e o total final do pedido.",
+    "Obrigado!"
+  );
 
   const message = lines.join("\n");
 
