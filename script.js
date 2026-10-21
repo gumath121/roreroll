@@ -14,6 +14,16 @@ let couponApplied = false;
 
 const products = [
   // BIG HOTS
+   
+{
+  id: 24,
+  name: "Big Hot Doritos – 10 unidades",
+  category: "hot",
+  price: 34.99,
+  description: "Hot rolls crocantes, recheados com cream cheese Philadelphia e finalizados com Doritos triturado, trazendo uma combinação irresistível de cremosidade, crocância e sabor marcante.",
+  image: "bighotdoritos.jpeg",
+  badge: "LANÇAMENTO"
+},
   {
     id: 1,
     name: "Big Hot Tradicional",
